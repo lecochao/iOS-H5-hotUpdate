@@ -1,0 +1,4 @@
+platform :ios, "8.0"
+
+pod 'CYLTabBarController', '~> 1.4.4'
+pod 'NJKWebViewProgress', '~> 0.2.3'
