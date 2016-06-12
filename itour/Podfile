@@ -1,4 +1,10 @@
 platform :ios, "8.0"
 
+pod 'AFNetworking', '~> 3.1.0'
 pod 'CYLTabBarController', '~> 1.4.4'
-pod 'NJKWebViewProgress', '~> 0.2.3'
+pod 'SSZipArchive', '~> 1.2'
+pod 'MBProgressHUD', '~> 0.9.2'
+pod 'UMengSocialCOM', '~> 5.2.1'
+pod "Qiniu", :git => 'https://github.com/qiniu/objc-sdk.git', :branch => 'AFNetworking-3.x'
+pod 'AMapLocation'
+pod 'MJRefresh', '~> 3.1.0'

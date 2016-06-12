@@ -25,6 +25,8 @@
 #import "ItAlbumViewController.h"
 #import "ItTopChartsViewController.h"
 #import "ItMoreViewController.h"
+#import "ItPostImgViewController.h"
+#import "ItRecommendViewController.h"
 
 @interface Root ()
 @property (nonatomic, readwrite, strong) CYLTabBarController *tabBarController;
@@ -44,6 +46,8 @@
                                                         initWithRootViewController:secondViewController];
         
         ItTopChartsViewController *thirdViewController = [[ItTopChartsViewController alloc] init];
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"ItPostImgStoryboard" bundle:nil];
+//        ItPostImgViewController *thirdViewController = [storyboard instantiateViewControllerWithIdentifier:@"ItRecommendViewControllerIdentifier"];
         UIViewController *thirdNavigationController = [[CYLBaseNavigationController alloc]
                                                        initWithRootViewController:thirdViewController];
         
@@ -57,8 +61,8 @@
          * 等效于在`-setUpTabBarItemsAttributesForController`方法中不传`CYLTabBarItemTitle`字段。
          * 更推荐后一种做法。
          */
-        //tabBarController.imageInsets = UIEdgeInsetsMake(4.5, 0, -4.5, 0);
-        //tabBarController.titlePositionAdjustment = UIOffsetMake(0, MAXFLOAT);
+//        tabBarController.imageInsets = UIEdgeInsetsMake(4.5, 0, -4.5, 0);
+        tabBarController.titlePositionAdjustment = UIOffsetMake(0, -5);
         
         // 在`-setViewControllers:`之前设置TabBar的属性，设置TabBarItem的属性，包括 title、Image、selectedImage。
         [self setUpTabBarItemsAttributesForController:tabBarController];
@@ -79,24 +83,24 @@
 - (void)setUpTabBarItemsAttributesForController:(CYLTabBarController *)tabBarController {
     
     NSDictionary *dict1 = @{
-                            CYLTabBarItemTitle : @"首页",
-                            CYLTabBarItemImage : @"home_normal",
-                            CYLTabBarItemSelectedImage : @"home_highlight",
+                            CYLTabBarItemTitle : @"景区导览图",
+                            CYLTabBarItemImage : @"tabbar_map_normal",
+                            CYLTabBarItemSelectedImage : @"tabbar_map_highlight",
                             };
     NSDictionary *dict2 = @{
-                            CYLTabBarItemTitle : @"同城",
-                            CYLTabBarItemImage : @"mycity_normal",
-                            CYLTabBarItemSelectedImage : @"mycity_highlight",
+                            CYLTabBarItemTitle : @"相册",
+                            CYLTabBarItemImage : @"tabbar_album_normal",
+                            CYLTabBarItemSelectedImage : @"tabbar_album_highlight",
                             };
     NSDictionary *dict3 = @{
-                            CYLTabBarItemTitle : @"消息",
-                            CYLTabBarItemImage : @"message_normal",
-                            CYLTabBarItemSelectedImage : @"message_highlight",
+                            CYLTabBarItemTitle : @"排行榜",
+                            CYLTabBarItemImage : @"tabbar_topCharts_normal",
+                            CYLTabBarItemSelectedImage : @"tabbar_topCharts_highlight",
                             };
     NSDictionary *dict4 = @{
-                            CYLTabBarItemTitle : @"我的",
-                            CYLTabBarItemImage : @"account_normal",
-                            CYLTabBarItemSelectedImage : @"account_highlight"
+                            CYLTabBarItemTitle : @"更多",
+                            CYLTabBarItemImage : @"tabbar_more_normal",
+                            CYLTabBarItemSelectedImage : @"tabbar_more_highlight"
                             };
     NSArray *tabBarItemsAttributes = @[
                                        dict1,
@@ -108,7 +112,7 @@
 }
 
 - (void)customizeTabBarAppearance:(CYLTabBarController *)tabBarController {
-#warning CUSTOMIZE YOUR TABBAR APPEARANCE
+//#warning CUSTOMIZE YOUR TABBAR APPEARANCE
     // Customize UITabBar height
     // 自定义 TabBar 高度
     // tabBarController.tabBarHeight = 40.f;
@@ -116,12 +120,13 @@
     // set the text color for unselected state
     // 普通状态下的文字属性
     NSMutableDictionary *normalAttrs = [NSMutableDictionary dictionary];
-    normalAttrs[NSForegroundColorAttributeName] = [UIColor grayColor];
+    normalAttrs[NSForegroundColorAttributeName] = APPColorGray;
+    
     
     // set the text color for selected state
     // 选中状态下的文字属性
     NSMutableDictionary *selectedAttrs = [NSMutableDictionary dictionary];
-    selectedAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
+    selectedAttrs[NSForegroundColorAttributeName] = APPColorRed;
     
     // set the text Attributes
     // 设置文字属性

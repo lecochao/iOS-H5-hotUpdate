@@ -7,9 +7,8 @@
 //
 
 #import "ItBaseViewController.h"
-
+#import <AVFoundation/AVFoundation.h>
 @interface ItMapViewController : ItBaseViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
-
-
-
+@property(nonatomic ,strong) AVAudioPlayer *avAudioPlayer;
+@property(nonatomic ,strong) AVAudioPlayer *playerNiao;
 @end

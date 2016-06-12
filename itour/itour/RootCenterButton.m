@@ -8,7 +8,6 @@
 
 #import "RootCenterButton.h"
 #import "CYLTabBarController.h"
-#import "ItCameraViewController.h"
 
 @interface RootCenterButton (){
     CGFloat _buttonImageHeight;
@@ -89,8 +88,8 @@
 + (instancetype)plusButton
 {
     
-    UIImage *buttonImage = [UIImage imageNamed:@"post_normal"];
-    UIImage *highlightImage = [UIImage imageNamed:@"post_normal"];
+    UIImage *buttonImage = [UIImage imageNamed:@"tabbar_camera"];
+    UIImage *highlightImage = [UIImage imageNamed:@"tabbar_camera"];
     
     RootCenterButton* button = [RootCenterButton buttonWithType:UIButtonTypeCustom];
     

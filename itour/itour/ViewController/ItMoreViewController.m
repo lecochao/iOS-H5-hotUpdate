@@ -7,19 +7,41 @@
 //
 
 #import "ItMoreViewController.h"
-
+#import "ItPostInfoViewController.h"
 @implementation ItMoreViewController
 -(void)viewDidLoad
 {
     NSLog(@"___viewDidLoad");
     [self setView];
-    [self setNavigationBarTintColor:[UIColor redColor]];
-    [self setNavigationBarLeftItem:@"back" Action:^{
-        NSLog(@"___back");
+    [self webViewReload];
+    WEAKSELF
+    UIButton *right = [UIButton new];
+    right.frame = CGRectMake(0, 0, 50, 35);
+    [right.titleLabel setFont:APPTextFont(14)];
+    right.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, -5);
+    [right setTitle:@"反馈" forState:UIControlStateNormal];
+    [right setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [right setImage:[UIImage imageNamed:@"nav_more_right"] forState:UIControlStateNormal];
+    [self setNavigationBarRightItem:right Action:^{
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"ItPostImgStoryboard" bundle:nil];
+        ItPostInfoViewController *postInfoController = [storyboard instantiateViewControllerWithIdentifier:@"PostInfoViewControllerIdentifier"];
+        postInfoController.type = @"feedback";
+        postInfoController.navigationItem.title = @"反馈信息";
+        [weakSelf.navigationController pushViewController:postInfoController animated:YES];
     }];
-    [self setNavigationBarRightItem:@"right" Action:^{
-        NSLog(@"____right");
-    }];
-    [self loadingWebWithUrl:[NSURL URLWithString:@"http://jingyan.baidu.com/article/c33e3f4886d930ea15cbb5aa.html"]];
 }
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationItem setTitle:@"更多"];
+    [self setNavigationBarStyle:1];
+}
+
+-(void)webViewReload
+{
+    [self loadingHtmlWithName:@"more.html"];
+}
+
 @end

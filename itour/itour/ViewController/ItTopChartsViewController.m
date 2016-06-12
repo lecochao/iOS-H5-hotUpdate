@@ -13,13 +13,21 @@
 {
     NSLog(@"___viewDidLoad");
     [self setView];
-    [self setNavigationBarTintColor:[UIColor redColor]];
-    [self setNavigationBarLeftItem:@"back" Action:^{
-        NSLog(@"___back");
-    }];
-    [self setNavigationBarRightItem:@"right" Action:^{
-        NSLog(@"____right");
-    }];
-    [self loadingWebWithUrl:[NSURL URLWithString:@"http://blog.sina.com.cn/s/blog_9693f61a010199te.html"]];
+    [self webViewReload];
 }
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationItem setTitle:@"排行榜"];
+    [self setNavigationBarStyle:1];
+}
+
+-(void)webViewReload
+{
+     [self loadingHtmlWithName:@"sort.html"];
+}
+
+
 @end
